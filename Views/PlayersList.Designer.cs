@@ -17,20 +17,27 @@ namespace ServerManager.Views
         #region Component Designer generated code
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            this.PlayersListDataGrid = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.PlayersListDataGrid)).BeginInit();
-            this.SuspendLayout();
+            PlayersListDataGrid = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)PlayersListDataGrid).BeginInit();
+            SuspendLayout();
+            // 
+            // PlayersListDataGrid
+            // 
+            PlayersListDataGrid.Dock = DockStyle.Fill;
+            PlayersListDataGrid.Location = new Point(0, 0);
+            PlayersListDataGrid.Name = "PlayersListDataGrid";
+            PlayersListDataGrid.Size = new Size(700, 450);
+            PlayersListDataGrid.TabIndex = 0;
             // 
             // PlayersList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.PlayersListDataGrid);
-            this.Name = "PlayersList";
-            this.Size = new System.Drawing.Size(700, 450);
-            ((System.ComponentModel.ISupportInitialize)(this.PlayersListDataGrid)).EndInit();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(PlayersListDataGrid);
+            Name = "PlayersList";
+            Size = new Size(700, 450);
+            ((System.ComponentModel.ISupportInitialize)PlayersListDataGrid).EndInit();
+            ResumeLayout(false);
         }
         #endregion
     }
