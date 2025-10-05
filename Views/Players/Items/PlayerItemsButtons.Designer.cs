@@ -1,6 +1,6 @@
-﻿namespace ServerManager.Views
+﻿namespace ServerManager.Views.Players.Items
 {
-    partial class PlayersButtons
+    partial class PlayerItemsButtons
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,31 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            ItemsButton = new Button();
-            SuspendLayout();
-            // 
-            // ItemsButton
-            // 
-            ItemsButton.FlatStyle = FlatStyle.Flat;
-            ItemsButton.Location = new Point(0, 0);
-            ItemsButton.Name = "ItemsButton";
-            ItemsButton.Size = new Size(151, 35);
-            ItemsButton.TabIndex = 0;
-            ItemsButton.Text = "Items";
-            ItemsButton.UseVisualStyleBackColor = true;
-            // 
-            // PlayersButtons
-            // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(ItemsButton);
-            Name = "PlayersButtons";
-            Size = new Size(151, 430);
-            ResumeLayout(false);
+            components = new System.ComponentModel.Container();
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         }
 
         #endregion
-
-        private Button ItemsButton;
     }
 }
