@@ -1,6 +1,6 @@
 ﻿namespace ServerManager.Views
 {
-    partial class PlayersItemsButtons
+    partial class PlayersButtons
     {
         /// <summary> 
         /// Required designer variable.

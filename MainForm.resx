@@ -123,6 +123,19 @@
   <metadata name="statusTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>135, 17</value>
   </metadata>
+  <data name="WelcomeLabel.Text" xml:space="preserve">
+    <value>Welcome to the Topaz Mir 4 Server Manager
+
+Please use the buttons on the right to navigate 
+through the program.
+
+Make sure to edit your settings.json so 
+the program can connect to your MySQL DB.
+
+
+
+v.05</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ServerManager.Views
 {
-    public partial class PlayersItemsButtons : UserControl
+    public partial class PlayersButtons : UserControl
     {
-        public PlayersItemsButtons()
+        public PlayersButtons()
         {
             InitializeComponent();
         }

@@ -28,10 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AddItemButton = new Button();
+            DeleteItemButton = new Button();
+            SuspendLayout();
+            // 
+            // AddItemButton
+            // 
+            AddItemButton.FlatStyle = FlatStyle.Flat;
+            AddItemButton.Location = new Point(0, 32);
+            AddItemButton.Name = "AddItemButton";
+            AddItemButton.Size = new Size(151, 35);
+            AddItemButton.TabIndex = 3;
+            AddItemButton.Text = "Add Item";
+            AddItemButton.UseVisualStyleBackColor = true;
+            // 
+            // DeleteItemButton
+            // 
+            DeleteItemButton.FlatStyle = FlatStyle.Flat;
+            DeleteItemButton.Location = new Point(0, 0);
+            DeleteItemButton.Name = "DeleteItemButton";
+            DeleteItemButton.Size = new Size(151, 35);
+            DeleteItemButton.TabIndex = 2;
+            DeleteItemButton.Text = "Delete Item";
+            DeleteItemButton.UseVisualStyleBackColor = true;
+            // 
+            // PlayerItemsButtons
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(AddItemButton);
+            Controls.Add(DeleteItemButton);
+            Name = "PlayerItemsButtons";
+            Size = new Size(151, 430);
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Button AddItemButton;
+        private Button DeleteItemButton;
     }
 }

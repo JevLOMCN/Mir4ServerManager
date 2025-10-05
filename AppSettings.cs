@@ -32,6 +32,12 @@ namespace ServerManager
         public SqlSettings Sql { get; set; } = new SqlSettings();
 
         /// <summary>
+        /// Root folder for server data (logs, configs, etc.). If blank, defaults to "<app>\ServerData".
+        /// Supports environment variables like "%PROGRAMDATA%\TopazMir4".
+        /// </summary>
+        public string ServerData { get; set; } = "";
+
+        /// <summary>
         /// Load settings from disk (or create defaults if missing).
         /// Call once at startup before using <see cref="Current"/>.
         /// </summary>
@@ -46,44 +52,32 @@ namespace ServerManager
             {
                 if (!File.Exists(SettingsPath))
                 {
-                    if (createIfMissing)
-                    {
-                        // Create a default file with safe dev defaults
-                        var fresh = new AppSettings();
-                        fresh.Validate();
-                        Save(fresh);
-                        Current = fresh;
-                    }
-                    else
-                    {
-                        var fresh = new AppSettings();
-                        fresh.Validate();
-                        Current = fresh;
-                    }
+                    var fresh = new AppSettings();
+                    fresh.ValidateAndNormalize();
+                    if (createIfMissing) Save(fresh);
+                    Current = fresh;
                     return;
                 }
 
                 var json = File.ReadAllText(SettingsPath);
                 var loaded = JsonSerializer.Deserialize<AppSettings>(json, _opts) ?? new AppSettings();
-                loaded.Validate();
+                loaded.ValidateAndNormalize();
                 Current = loaded;
             }
             catch
             {
                 // Failsafe: keep defaults if anything goes wrong
                 var fresh = new AppSettings();
-                fresh.Validate();
+                fresh.ValidateAndNormalize();
                 Current = fresh;
             }
         }
 
-        /// <summary>
-        /// Persist settings to disk. If <paramref name="settings"/> is null, saves <see cref="Current"/>.
-        /// </summary>
+        /// <summary>Persist settings to disk. If <paramref name="settings"/> is null, saves <see cref="Current"/>.</summary>
         public static void Save(AppSettings? settings = null)
         {
             var toSave = settings ?? Current;
-            toSave.Validate();
+            toSave.ValidateAndNormalize();
 
             var json = JsonSerializer.Serialize(toSave, _opts);
             var dir = Path.GetDirectoryName(SettingsPath);
@@ -94,17 +88,38 @@ namespace ServerManager
         }
 
         /// <summary>
-        /// Ensure required fields have sane values (avoids empty/invalid settings causing implicit localhost, etc.).
+        /// Ensure required fields have sane values and normalize paths/values.
         /// </summary>
-        private void Validate()
+        private void ValidateAndNormalize()
         {
+            // SQL defaults
             if (Sql == null) Sql = new SqlSettings();
-
-            // Sensible dev defaults
             if (string.IsNullOrWhiteSpace(Sql.Ip)) Sql.Ip = "127.0.0.1";
             if (Sql.Port <= 0 || Sql.Port > 65535) Sql.Port = 3306;
-            if (string.IsNullOrWhiteSpace(Sql.Username)) Sql.Username = "root";
+            if (string.IsNullOrWhiteSpace(Sql.Username)) Sql.Username = "dev";
             if (Sql.Password is null) Sql.Password = string.Empty;
+
+            // ServerData path: default to "<app>\ServerData" if empty
+            if (ServerData is null) ServerData = "";
+            ServerData = ServerData.Trim();
+            if (string.IsNullOrWhiteSpace(ServerData))
+            {
+                ServerData = Path.Combine(AppContext.BaseDirectory, "ServerData");
+            }
+            else
+            {
+                // Expand %ENV% and normalize to full path
+                var expanded = Environment.ExpandEnvironmentVariables(ServerData);
+                try
+                {
+                    ServerData = Path.GetFullPath(expanded);
+                }
+                catch
+                {
+                    // If invalid, fall back to default under app dir
+                    ServerData = Path.Combine(AppContext.BaseDirectory, "ServerData");
+                }
+            }
         }
 
         /// <summary>Settings for MySQL connectivity.</summary>

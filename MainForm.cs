@@ -213,7 +213,7 @@ namespace ServerManager
         private void PlayersButton_Click(object sender, EventArgs e)
         {
             var left = new ServerManager.Views.PlayersButtons(); // your left-side actions for Players
-            var right = new ServerManager.Forms.PlayersList();     // the main Players view
+            var right = new ServerManager.Views.PlayersList();     // the main Players view
 
             // Push current pair, then swap both panels
             if (_currentLeft != null && _currentRight != null)

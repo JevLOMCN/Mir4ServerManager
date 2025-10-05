@@ -41,9 +41,11 @@
             MemuraiLabel = new ToolStripStatusLabel();
             statusTimer = new System.Windows.Forms.Timer(components);
             ViewPanel = new Panel();
+            WelcomeLabel = new Label();
             ButtonPanel = new Panel();
             PlayersButton = new Button();
             ServerStatus.SuspendLayout();
+            ViewPanel.SuspendLayout();
             ButtonPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -110,11 +112,24 @@
             // 
             // ViewPanel
             // 
+            ViewPanel.Controls.Add(WelcomeLabel);
             ViewPanel.Dock = DockStyle.Right;
             ViewPanel.Location = new Point(157, 0);
             ViewPanel.Name = "ViewPanel";
             ViewPanel.Size = new Size(643, 430);
             ViewPanel.TabIndex = 1;
+            // 
+            // WelcomeLabel
+            // 
+            WelcomeLabel.AutoSize = true;
+            WelcomeLabel.Dock = DockStyle.Fill;
+            WelcomeLabel.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            WelcomeLabel.Location = new Point(0, 0);
+            WelcomeLabel.Name = "WelcomeLabel";
+            WelcomeLabel.Size = new Size(625, 407);
+            WelcomeLabel.TabIndex = 0;
+            WelcomeLabel.Text = resources.GetString("WelcomeLabel.Text");
+            WelcomeLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // ButtonPanel
             // 
@@ -149,6 +164,8 @@
             Text = "Topaz Mir 4 Server Manager";
             ServerStatus.ResumeLayout(false);
             ServerStatus.PerformLayout();
+            ViewPanel.ResumeLayout(false);
+            ViewPanel.PerformLayout();
             ButtonPanel.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -169,5 +186,6 @@
         private Panel ViewPanel;
         private Panel ButtonPanel;
         private Button PlayersButton;
+        private Label WelcomeLabel;
     }
 }
