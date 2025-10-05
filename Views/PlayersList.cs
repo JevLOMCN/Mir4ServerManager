@@ -16,24 +16,9 @@ namespace ServerManager.Views
         {
             InitializeComponent();
 
-            // Grid behavior (keep here so you can tweak in Designer if you like)
-            PlayersListDataGrid.ReadOnly = true;
-            PlayersListDataGrid.AllowUserToAddRows = false;
-            PlayersListDataGrid.AllowUserToDeleteRows = false;
-            PlayersListDataGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            PlayersListDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            PlayersListDataGrid.AutoGenerateColumns = true;
-            PlayersListDataGrid.RowHeadersVisible = false;
-            PlayersListDataGrid.BorderStyle = BorderStyle.None;
-
-            PlayersListDataGrid.DataSource = _bs;
-
             this.Load += async (_, __) => await LoadDataAsync();
         }
 
-        /// <summary>
-        /// Loads all characters from mm_game_db_release.character_tb into the grid.
-        /// </summary>
         public async Task LoadDataAsync()
         {
             try
@@ -44,8 +29,6 @@ namespace ServerManager.Views
                 const string sql = "SELECT * FROM character_tb";
                 DataTable dt = await Database.QueryAsync("mm_game_db_release", sql);
                 _bs.DataSource = dt;
-
-                PlayersListDataGrid.AutoResizeColumns();
             }
             catch (Exception ex)
             {

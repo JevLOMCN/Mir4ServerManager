@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
 
-namespace ServerManager.Forms
+namespace ServerManager.Views
 {
     partial class PlayersList : UserControl
     {
@@ -21,15 +21,6 @@ namespace ServerManager.Forms
             this.PlayersListDataGrid = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.PlayersListDataGrid)).BeginInit();
             this.SuspendLayout();
-            // 
-            // PlayersListDataGrid
-            // 
-            this.PlayersListDataGrid.Name = "PlayersListDataGrid";
-            this.PlayersListDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PlayersListDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.PlayersListDataGrid.Location = new System.Drawing.Point(0, 0);
-            this.PlayersListDataGrid.Size = new System.Drawing.Size(700, 450);
-            this.PlayersListDataGrid.TabIndex = 0;
             // 
             // PlayersList
             // 
