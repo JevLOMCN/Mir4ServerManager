@@ -1,6 +1,6 @@
-﻿namespace ServerManager.Forms
+﻿namespace ServerManager.Views
 {
-    partial class PlayerList
+    partial class PlayersButtons
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,31 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            PlayersListView = new ListView();
+            ItemsButton = new Button();
             SuspendLayout();
             // 
-            // PlayersListView
+            // ItemsButton
             // 
-            PlayersListView.BorderStyle = BorderStyle.None;
-            PlayersListView.Dock = DockStyle.Fill;
-            PlayersListView.Location = new Point(0, 0);
-            PlayersListView.Name = "PlayersListView";
-            PlayersListView.Size = new Size(150, 150);
-            PlayersListView.TabIndex = 0;
-            PlayersListView.UseCompatibleStateImageBehavior = false;
-            PlayersListView.View = View.List;
+            ItemsButton.FlatStyle = FlatStyle.Flat;
+            ItemsButton.Location = new Point(0, 0);
+            ItemsButton.Name = "ItemsButton";
+            ItemsButton.Size = new Size(151, 35);
+            ItemsButton.TabIndex = 0;
+            ItemsButton.Text = "Items";
+            ItemsButton.UseVisualStyleBackColor = true;
             // 
-            // PlayerList
+            // PlayersButtons
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(PlayersListView);
-            Name = "PlayerList";
+            Controls.Add(ItemsButton);
+            Name = "PlayersButtons";
+            Size = new Size(151, 430);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private ListView PlayersListView;
+        private Button ItemsButton;
     }
 }

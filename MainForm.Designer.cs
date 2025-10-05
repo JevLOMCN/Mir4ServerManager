@@ -134,6 +134,7 @@
             PlayersButton.TabIndex = 0;
             PlayersButton.Text = "Players";
             PlayersButton.UseVisualStyleBackColor = true;
+            PlayersButton.Click += PlayersButton_Click;
             // 
             // MainForm
             // 

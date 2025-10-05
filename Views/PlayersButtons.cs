@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ServerManager.Forms
+namespace ServerManager.Views
 {
-    public partial class PlayerList : UserControl
+    public partial class PlayersButtons : UserControl
     {
-        public PlayerList()
+        public PlayersButtons()
         {
             InitializeComponent();
         }
