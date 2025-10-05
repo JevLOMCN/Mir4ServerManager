@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             ServerStatus = new StatusStrip();
             ChattingServerLabel = new ToolStripStatusLabel();
@@ -38,7 +39,12 @@
             MySQLLabel = new ToolStripStatusLabel();
             CouchbaseLabel = new ToolStripStatusLabel();
             MemuraiLabel = new ToolStripStatusLabel();
+            statusTimer = new System.Windows.Forms.Timer(components);
+            ViewPanel = new Panel();
+            ButtonPanel = new Panel();
+            PlayersButton = new Button();
             ServerStatus.SuspendLayout();
+            ButtonPanel.SuspendLayout();
             SuspendLayout();
             // 
             // ServerStatus
@@ -98,17 +104,51 @@
             MemuraiLabel.Size = new Size(55, 15);
             MemuraiLabel.Text = "Memurai";
             // 
+            // statusTimer
+            // 
+            statusTimer.Interval = 2000;
+            // 
+            // ViewPanel
+            // 
+            ViewPanel.Dock = DockStyle.Right;
+            ViewPanel.Location = new Point(157, 0);
+            ViewPanel.Name = "ViewPanel";
+            ViewPanel.Size = new Size(643, 430);
+            ViewPanel.TabIndex = 1;
+            // 
+            // ButtonPanel
+            // 
+            ButtonPanel.Controls.Add(PlayersButton);
+            ButtonPanel.Dock = DockStyle.Left;
+            ButtonPanel.Location = new Point(0, 0);
+            ButtonPanel.Name = "ButtonPanel";
+            ButtonPanel.Size = new Size(151, 430);
+            ButtonPanel.TabIndex = 2;
+            // 
+            // PlayersButton
+            // 
+            PlayersButton.FlatStyle = FlatStyle.Flat;
+            PlayersButton.Location = new Point(0, 0);
+            PlayersButton.Name = "PlayersButton";
+            PlayersButton.Size = new Size(151, 35);
+            PlayersButton.TabIndex = 0;
+            PlayersButton.Text = "Players";
+            PlayersButton.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(ButtonPanel);
+            Controls.Add(ViewPanel);
             Controls.Add(ServerStatus);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainForm";
             Text = "Topaz Mir 4 Server Manager";
             ServerStatus.ResumeLayout(false);
             ServerStatus.PerformLayout();
+            ButtonPanel.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -124,5 +164,9 @@
         private ToolStripStatusLabel MySQLLabel;
         private ToolStripStatusLabel CouchbaseLabel;
         private ToolStripStatusLabel MemuraiLabel;
+        private System.Windows.Forms.Timer statusTimer;
+        private Panel ViewPanel;
+        private Panel ButtonPanel;
+        private Button PlayersButton;
     }
 }

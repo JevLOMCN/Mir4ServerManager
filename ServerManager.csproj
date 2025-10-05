@@ -8,4 +8,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MySqlConnector" Version="2.4.0" />
+    <PackageReference Include="System.ServiceProcess.ServiceController" Version="9.0.9" />
+  </ItemGroup>
+
 </Project>
